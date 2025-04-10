@@ -2,9 +2,10 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:get_thumbnail_video/index.dart';
+import 'package:get_thumbnail_video/video_thumbnail.dart';
 import 'package:video_editor/src/controller.dart';
 import 'package:video_editor/src/models/cover_data.dart';
-import 'package:video_thumbnail/video_thumbnail.dart';
 
 Stream<List<Uint8List>> generateTrimThumbnails(
   VideoEditorController controller, {
@@ -86,12 +87,12 @@ Future<CoverData> generateSingleCoverThumbnail(
 /// Generate a cover at [timeMs] in video
 ///
 /// Returns a [File] depending on [timeMs] milliseconds
-Future<String?> generateSingleCoverThumbnailFile(
+Future<XFile?> generateSingleCoverThumbnailFile(
   String filePath, {
   int timeMs = 0,
   int quality = 10,
 }) async {
-  final String? path = await VideoThumbnail.thumbnailFile(
+  final XFile? path = await VideoThumbnail.thumbnailFile(
     imageFormat: ImageFormat.WEBP,
     video: filePath,
     timeMs: timeMs,

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:get_thumbnail_video/video_thumbnail.dart';
 import 'package:video_editor/src/utils/helpers.dart';
 import 'package:video_editor/src/utils/thumbnails.dart';
 import 'package:video_editor/src/models/cover_data.dart';
@@ -392,7 +393,7 @@ class VideoEditorController extends ChangeNotifier {
     updateSelectedCover(defaultCover);
   }
 
-  Future<String?> generateDefaultCoverThumbnailFile() async {
+  Future<XFile?> generateDefaultCoverThumbnailFile() async {
     final defaultCover = await generateSingleCoverThumbnailFile(
       file.path,
       timeMs: startTrim.inMilliseconds,
