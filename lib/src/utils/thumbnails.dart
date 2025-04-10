@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
@@ -80,4 +81,22 @@ Future<CoverData> generateSingleCoverThumbnail(
   );
 
   return CoverData(thumbData: thumbData, timeMs: timeMs);
+}
+
+/// Generate a cover at [timeMs] in video
+///
+/// Returns a [File] depending on [timeMs] milliseconds
+Future<String?> generateSingleCoverThumbnailFile(
+  String filePath, {
+  int timeMs = 0,
+  int quality = 10,
+}) async {
+  final String? path = await VideoThumbnail.thumbnailFile(
+    imageFormat: ImageFormat.WEBP,
+    video: filePath,
+    timeMs: timeMs,
+    quality: quality,
+  );
+
+  return path;
 }

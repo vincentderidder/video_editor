@@ -392,6 +392,15 @@ class VideoEditorController extends ChangeNotifier {
     updateSelectedCover(defaultCover);
   }
 
+  Future<String?> generateDefaultCoverThumbnailFile() async {
+    final defaultCover = await generateSingleCoverThumbnailFile(
+      file.path,
+      timeMs: startTrim.inMilliseconds,
+      quality: coverThumbnailsQuality,
+    );
+    return defaultCover;
+  }
+
   /// Get the [selectedCover] notifier
   ValueNotifier<CoverData?> get selectedCoverNotifier => _selectedCover;
 
